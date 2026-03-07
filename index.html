@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>吳竣瑋 | 全端工程師 · AI 應用開發</title>
+  <meta name="description" content="吳竣瑋的作品集 — 專注於 AI 應用、全端開發、自動化工具，已完成多個企業級商業案例。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #080c14;
+      --bg2: #0d1421;
+      --bg3: #111827;
+      --surface: #151e2e;
+      --surface2: #1c2a3e;
+      --border: rgba(99, 179, 237, 0.12);
+      --primary: #38bdf8;
+      --primary2: #818cf8;
+      --accent: #34d399;
+      --text: #e2e8f0;
+      --muted: #6b7280;
+      --glow: rgba(56, 189, 248, 0.15);
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Noto Sans TC', 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ─── NOISE OVERLAY ─── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.4;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 4rem;
+      background: rgba(8, 12, 20, 0.8);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-size: 1.2rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--primary), var(--primary2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: 0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+      letter-spacing: 0.03em;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      padding: 8rem 2rem 4rem;
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(56, 189, 248, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(56, 189, 248, 0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 0%, transparent 100%);
+    }
+
+    .hero-glow {
+      position: absolute;
+      top: -20%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 900px;
+      height: 500px;
+      background: radial-gradient(ellipse, rgba(56, 189, 248, 0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(56, 189, 248, 0.08);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      border-radius: 100px;
+      padding: 0.4rem 1rem;
+      font-size: 0.8rem;
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+      animation: fadeInUp 0.6s ease both;
+    }
+
+    .hero-badge span {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: 0.5;
+        transform: scale(1.4);
+      }
+    }
+
+    .hero h1 {
+      font-size: clamp(2.8rem, 7vw, 5rem);
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+      animation: fadeInUp 0.6s 0.1s ease both;
+    }
+
+    .hero h1 .name {
+      display: block;
+    }
+
+    .hero h1 .title {
+      display: block;
+      font-size: 0.5em;
+      font-weight: 400;
+      background: linear-gradient(135deg, var(--primary), var(--primary2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: 0.05em;
+    }
+
+    .hero-desc {
+      max-width: 600px;
+      color: var(--muted);
+      font-size: 1.05rem;
+      margin-bottom: 2.5rem;
+      line-height: 1.8;
+      animation: fadeInUp 0.6s 0.2s ease both;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      animation: fadeInUp 0.6s 0.3s ease both;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: linear-gradient(135deg, var(--primary), #0ea5e9);
+      color: #000;
+      padding: 0.75rem 2rem;
+      border-radius: 100px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 0 24px rgba(56, 189, 248, 0.3);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 36px rgba(56, 189, 248, 0.5);
+    }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.75rem 2rem;
+      border-radius: 100px;
+      font-weight: 500;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--primary);
+      background: var(--glow);
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 3rem;
+      margin-top: 4rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      animation: fadeInUp 0.6s 0.4s ease both;
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat-num {
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: var(--primary);
+      display: block;
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ─── SECTION ─── */
+    section {
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 6rem 2rem;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800;
+      margin-bottom: 1rem;
+    }
+
+    .section-desc {
+      color: var(--muted);
+      max-width: 560px;
+      font-size: 1rem;
+      margin-bottom: 3rem;
+    }
+
+    /* ─── SKILLS ─── */
+    #skills {
+      background: var(--bg2);
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .skill-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.5rem;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+
+    .skill-card:hover {
+      border-color: rgba(56, 189, 248, 0.4);
+      transform: translateY(-4px);
+    }
+
+    .skill-icon {
+      font-size: 2rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .skill-name {
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .skill-desc {
+      color: var(--muted);
+      font-size: 0.85rem;
+      line-height: 1.6;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.75rem;
+    }
+
+    .tag {
+      font-size: 0.7rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 100px;
+      background: rgba(56, 189, 248, 0.08);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      color: var(--primary);
+    }
+
+    /* ─── PROJECTS ─── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 2rem;
+    }
+
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(56, 189, 248, 0.35);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(56, 189, 248, 0.1);
+    }
+
+    .project-img {
+      width: 100%;
+      aspect-ratio: 16/10;
+      object-fit: cover;
+      border-bottom: 1px solid var(--border);
+      display: block;
+      background: var(--bg3);
+      transition: transform 0.4s;
+    }
+
+    .project-card:hover .project-img {
+      transform: scale(1.03);
+    }
+
+    .project-img-wrap {
+      overflow: hidden;
+    }
+
+    .project-body {
+      padding: 1.5rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-category {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 0.4rem;
+    }
+
+    .project-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+    }
+
+    .project-desc {
+      color: var(--muted);
+      font-size: 0.88rem;
+      line-height: 1.7;
+      flex: 1;
+    }
+
+    .project-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 1.25rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .project-tags {
+      display: flex;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+    }
+
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.8rem;
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+      transition: gap 0.2s;
+      white-space: nowrap;
+    }
+
+    .project-link:hover {
+      gap: 0.5rem;
+    }
+
+    /* ─── FEATURED (wide card) ─── */
+    .project-card.featured {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .project-card.featured .project-img-wrap {
+      border-bottom: none;
+      border-right: 1px solid var(--border);
+    }
+
+    .project-card.featured .project-img {
+      height: 100%;
+      aspect-ratio: auto;
+    }
+
+    @media(max-width: 768px) {
+      .project-card.featured {
+        grid-column: auto;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .project-card.featured .project-img-wrap {
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .project-card.featured .project-img {
+        height: auto;
+        aspect-ratio: 16/10;
+      }
+
+      nav {
+        padding: 1rem 1.5rem;
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+
+    /* ─── CONTACT ─── */
+    #contact {
+      background: var(--bg2);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .contact-info h2 {
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+    }
+
+    .contact-info p {
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 2rem;
+    }
+
+    .contact-items {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 1.25rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+
+    .contact-item-icon {
+      font-size: 1.5rem;
+    }
+
+    .contact-item-label {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .contact-item-value {
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .contact-form {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.75rem 1rem;
+      color: var(--text);
+      font-family: inherit;
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--primary);
+    }
+
+    .form-group textarea {
+      height: 120px;
+      resize: vertical;
+    }
+
+    .btn-submit {
+      width: 100%;
+      padding: 0.85rem;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--primary), #0ea5e9);
+      color: #000;
+      font-weight: 700;
+      font-size: 1rem;
+      border: none;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+
+    .btn-submit:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+    }
+
+    @media(max-width: 768px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    footer a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    /* ─── SCROLL ANIM ─── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─── MODAL ─── */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(8px);
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .modal-overlay.open {
+      display: flex;
+    }
+
+    .modal {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      max-width: 700px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      animation: fadeInUp 0.3s ease;
+    }
+
+    .modal img {
+      width: 100%;
+      border-radius: 16px 16px 0 0;
+    }
+
+    .modal-body {
+      padding: 2rem;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      color: white;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-overlay {
+      position: fixed;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">吳竣瑋 · CW</div>
+    <ul class="nav-links">
+      <li><a href="#skills">技能</a></li>
+      <li><a href="#projects">作品集</a></li>
+      <li><a href="#contact">聯絡我</a></li>
+      <li><a href="https://github.com/Chunweiwu518" target="_blank">GitHub ↗</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-grid"></div>
+    <div class="hero-glow"></div>
+
+    <div class="hero-badge">
+      <span></span> 接案中 · 可立即開始
+    </div>
+
+    <h1>
+      <span class="name">吳竣瑋</span>
+      <span class="title">全端工程師 · AI 應用開發</span>
+    </h1>
+
+    <p class="hero-desc">
+      專注於打造 <strong>AI 驅動的商業應用</strong>，擅長 Python 後端、TypeScript 全端、自動化流程，
+      已協助多間企業完成數位轉型與智能化系統。
+    </p>
+
+    <div class="hero-cta">
+      <a href="#projects" class="btn-primary">✦ 查看作品集</a>
+      <a href="#contact" class="btn-outline">✉ 聯絡合作</a>
+    </div>
+
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-num">50+</span><span class="stat-label">GitHub Projects</span></div>
+      <div class="stat"><span class="stat-num">10+</span><span class="stat-label">商業案例</span></div>
+      <div class="stat"><span class="stat-num">3+</span><span class="stat-label">年開發經驗</span></div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="section-inner">
+      <div class="section-label">Core Skills</div>
+      <h2 class="section-title">技術能力</h2>
+      <p class="section-desc">涵蓋從 AI 模型整合到前後端全端開發，以及自動化、爬蟲等完整技術棧。</p>
+      <div class="skills-grid reveal">
+        <div class="skill-card">
+          <div class="skill-icon">🤖</div>
+          <div class="skill-name">AI / LLM 應用</div>
+          <div class="skill-desc">RAG 知識庫、ChatBot、多模態 Agent、語音辨識整合</div>
+          <div class="skill-tags">
+            <span class="tag">OpenAI</span><span class="tag">LangChain</span><span class="tag">LangGraph</span><span
+              class="tag">Whisper</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">⚡</div>
+          <div class="skill-name">後端開發</div>
+          <div class="skill-desc">RESTful API、WebSocket 即時通訊、資料庫設計</div>
+          <div class="skill-tags">
+            <span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">Node.js</span><span
+              class="tag">PostgreSQL</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">🎨</div>
+          <div class="skill-name">前端開發</div>
+          <div class="skill-desc">響應式 UI、SPA、即時更新介面、Component 設計</div>
+          <div class="skill-tags">
+            <span class="tag">TypeScript</span><span class="tag">React</span><span class="tag">Next.js</span><span
+              class="tag">Vue</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">🔧</div>
+          <div class="skill-name">自動化 / 爬蟲</div>
+          <div class="skill-desc">電商平台自動化、資料爬取、排程任務、OCR</div>
+          <div class="skill-tags">
+            <span class="tag">Selenium</span><span class="tag">Playwright</span><span class="tag">Scrapy</span><span
+              class="tag">APScheduler</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">📊</div>
+          <div class="skill-name">資料分析 / ML</div>
+          <div class="skill-desc">機器學習模型、NLP 文字處理、數據視覺化</div>
+          <div class="skill-tags">
+            <span class="tag">Pandas</span><span class="tag">scikit-learn</span><span
+              class="tag">Transformers</span><span class="tag">Jupyter</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">☁️</div>
+          <div class="skill-name">部署 / DevOps</div>
+          <div class="skill-desc">容器化部署、CI/CD、雲端服務整合</div>
+          <div class="skill-tags">
+            <span class="tag">Docker</span><span class="tag">GitHub Actions</span><span class="tag">GCP</span><span
+              class="tag">Nginx</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="section-inner">
+      <div class="section-label">Portfolio</div>
+      <h2 class="section-title">作品集</h2>
+      <p class="section-desc">以下為部分代表性案例，涵蓋 AI 應用、全端系統、自動化工具等。</p>
+
+      <div class="projects-grid">
+
+        <!-- FEATURED: KE MING -->
+        <div class="project-card featured reveal">
+          <div class="project-img-wrap">
+            <img src="images/ke_ming.png" alt="科明企業AI RAG知識庫管理Chat系統" class="project-img" />
+          </div>
+          <div class="project-body">
+            <div class="project-category">AI · RAG · 企業應用</div>
+            <div class="project-title">科明 — 企業 AI RAG 知識庫管理 Chat 系統</div>
+            <div class="project-desc">
+              為企業打造的 AI RAG 知識庫管理與對話系統。員工可上傳 PDF、Word、Excel，系統自動建立向量索引，透過自然語言 Chat 方式即可精準查詢企業內部知識，並附上來源文件引用，杜絕 AI
+              幻覺。<br /><br />
+              <strong>技術棧：</strong> Python FastAPI × Next.js TypeScript × LangChain × OpenAI Embedding × Chroma DB ×
+              Docker
+            </div>
+            <div class="project-footer">
+              <div class="project-tags">
+                <span class="tag">Python</span><span class="tag">TypeScript</span><span class="tag">RAG</span><span
+                  class="tag">LangChain</span><span class="tag">OpenAI</span>
+              </div>
+              <a href="https://github.com/Chunweiwu518" class="project-link" target="_blank">GitHub 主頁 →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- ERP -->
+        <div class="project-card reveal">
+          <div class="project-img-wrap">
+            <img src="images/erp.png" alt="ERP 系統" class="project-img" />
+          </div>
+          <div class="project-body">
+            <div class="project-category">全端 · 企業系統</div>
+            <div class="project-title">企業 ERP 管理系統</div>
+            <div class="project-desc">
+              全方位企業資源規劃系統，涵蓋訂單管理、庫存追蹤、財務報表、人員權限控管。即時 KPI 儀表板、多角色身份驗證。
+            </div>
+            <div class="project-footer">
+              <div class="project-tags">
+                <span class="tag">TypeScript</span><span class="tag">React</span><span class="tag">PostgreSQL</span>
+              </div>
+              <a href="https://github.com/Chunweiwu518" class="project-link" target="_blank">GitHub 主頁 →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- TRANSLATION -->
+        <div class="project-card reveal">
+          <div class="project-img-wrap">
+            <img src="images/translation.png" alt="即時翻譯聊天系統" class="project-img" />
+          </div>
+          <div class="project-body">
+            <div class="project-category">AI · 即時通訊</div>
+            <div class="project-title">即時翻譯聊天系統</div>
+            <div class="project-desc">
+              基於 WebSocket 的即時多語言翻譯平台，支援繁中、英、日等多語言即時互譯。整合 GPT API 翻譯引擎，可保留語氣和語境。
+            </div>
+            <div class="project-footer">
+              <div class="project-tags">
+                <span class="tag">TypeScript</span><span class="tag">WebSocket</span><span class="tag">OpenAI</span>
+              </div>
+              <a href="https://github.com/Chunweiwu518" class="project-link" target="_blank">GitHub 主頁 →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- CYBERBIZ -->
+        <div class="project-card reveal">
+          <div class="project-img-wrap">
+            <img src="images/cyberbiz.png" alt="Cyberbiz 電商自動化工具" class="project-img" />
+          </div>
+          <div class="project-body">
+            <div class="project-category">自動化 · 電商</div>
+            <div class="project-title">Cyberbiz 電商自動化工具</div>
+            <div class="project-desc">
+              針對 Cyberbiz 電商的自動化工具，包含商品爬取、庫存同步、自動打標籤、批量訂單處理。排程每日自動執行，大幅節省人工作業時間。
+            </div>
+            <div class="project-footer">
+              <div class="project-tags">
+                <span class="tag">Python</span><span class="tag">Selenium</span><span class="tag">排程</span>
+              </div>
+              <a href="https://github.com/Chunweiwu518" class="project-link" target="_blank">GitHub 主頁 →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- TRANSCRIPTION -->
+        <div class="project-card reveal">
+          <div class="project-img-wrap">
+            <img src="images/transcription.png" alt="錄音逐字稿系統" class="project-img" />
+          </div>
+          <div class="project-body">
+            <div class="project-category">AI · 語音辨識</div>
+            <div class="project-title">會議錄音逐字稿系統</div>
+            <div class="project-desc">
+              上傳錄音檔即可自動產生多說話者逐字稿，支援時間戳記標注，可匯出 Word/PDF。整合 Whisper 語音辨識模型，支援中英文。
+            </div>
+            <div class="project-footer">
+              <div class="project-tags">
+                <span class="tag">Python</span><span class="tag">Whisper</span><span class="tag">FastAPI</span>
+              </div>
+              <a href="https://github.com/Chunweiwu518" class="project-link" target="_blank">GitHub 主頁 →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- ECOMMERCE BACKEND -->
+        <div class="project-card reveal">
+          <div class="project-img-wrap">
+            <img src="images/waterdrop.png" alt="電商賣家後台管理系統" class="project-img" />
+          </div>
+          <div class="project-body">
+            <div class="project-category">全端 · 電商</div>
+            <div class="project-title">電商賣家後台管理系統</div>
+            <div class="project-desc">
+              為電商賣家打造的全端後台管理系統，涵蓋商品管理、訂單追蹤、庫存監控、業績報表。即時資料更新、多帳號權限管理，大幅提升賣場運營效率。
+            </div>
+            <div class="project-footer">
+              <div class="project-tags">
+                <span class="tag">TypeScript</span><span class="tag">React</span><span class="tag">Node.js</span>
+              </div>
+              <a href="https://github.com/Chunweiwu518" class="project-link" target="_blank">GitHub 主頁 →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- BACKTEST -->
+        <div class="project-card reveal">
+          <div class="project-img-wrap">
+            <img src="images/backtest.png" alt="量化回測平台" class="project-img" />
+          </div>
+          <div class="project-body">
+            <div class="project-category">金融 · 數據分析</div>
+            <div class="project-title">量化交易策略回測平台</div>
+            <div class="project-desc">
+              策略參數設定、歷史數據回測、績效指標計算（總報酬率、夏普比率、最大回撤），搭配 K 線圖與買賣點可視化。
+            </div>
+            <div class="project-footer">
+              <div class="project-tags">
+                <span class="tag">TypeScript</span><span class="tag">Charts</span><span class="tag">金融數據</span>
+              </div>
+              <a href="https://github.com/Chunweiwu518" class="project-link" target="_blank">GitHub 主頁 →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- ML -->
+        <div class="project-card reveal">
+          <div class="project-img-wrap">
+            <img src="images/ml.png" alt="機器學習 NLP 專案" class="project-img" />
+          </div>
+          <div class="project-body">
+            <div class="project-category">ML · NLP · 研究</div>
+            <div class="project-title">機器學習 &amp; NLP 研究專案</div>
+            <div class="project-desc">
+              包含中文文本分類、情感分析、NLP Pipeline 建構。實作 LORA/QLORA 微調、Transformer 模型訓練，模型準確率達 94.3%。
+            </div>
+            <div class="project-footer">
+              <div class="project-tags">
+                <span class="tag">Python</span><span class="tag">Transformers</span><span class="tag">NLP</span>
+              </div>
+              <a href="https://github.com/Chunweiwu518" class="project-link" target="_blank">GitHub 主頁 →</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-inner">
+      <div class="contact-grid reveal">
+        <div class="contact-info">
+          <div class="section-label">Contact</div>
+          <h2>歡迎洽談合作</h2>
+          <p>
+            無論是 AI 應用開發、網站系統建置、電商自動化，還是資料分析專案，
+            都歡迎與我聯繫。我會在 24 小時內回覆，並提供免費的需求評估。
+          </p>
+          <div class="contact-items">
+            <div class="contact-item">
+              <div class="contact-item-icon">💼</div>
+              <div>
+                <div class="contact-item-label">GitHub</div>
+                <div class="contact-item-value"><a href="https://github.com/Chunweiwu518"
+                    style="color:var(--primary);text-decoration:none;" target="_blank">github.com/Chunweiwu518</a></div>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-item-icon">⚡</div>
+              <div>
+                <div class="contact-item-label">專長領域</div>
+                <div class="contact-item-value">AI 應用 · 全端開發 · 自動化</div>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-item-icon">🌏</div>
+              <div>
+                <div class="contact-item-label">服務地區</div>
+                <div class="contact-item-value">台灣 · 遠端皆可</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="contact-form">
+          <h3 style="margin-bottom:1.5rem;font-size:1.2rem;">送出詢問</h3>
+          <div class="form-group">
+            <label>您的姓名</label>
+            <input type="text" placeholder="王小明" id="fname" />
+          </div>
+          <div class="form-group">
+            <label>Email / LINE ID</label>
+            <input type="text" placeholder="email@example.com" id="femail" />
+          </div>
+          <div class="form-group">
+            <label>專案需求描述</label>
+            <textarea placeholder="請描述您的需求，例如：需要建置一個 AI 客服系統..." id="fmsg"></textarea>
+          </div>
+          <button class="btn-submit" onclick="handleSubmit()">✦ 送出詢問</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 吳竣瑋 · Built with ♥ · <a href="https://github.com/Chunweiwu518" target="_blank">GitHub</a></p>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('visible'), i * 80);
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+
+    // Contact form
+    function handleSubmit() {
+      const name = document.getElementById('fname').value;
+      const email = document.getElementById('femail').value;
+      const msg = document.getElementById('fmsg').value;
+      if (!name || !email || !msg) { alert('請填寫所有欄位'); return; }
+      const subject = encodeURIComponent(`[作品集詢問] 來自 ${name}`);
+      const body = encodeURIComponent(`姓名：${name}\n聯絡方式：${email}\n\n需求描述：\n${msg}`);
+      window.location.href = `mailto:?subject=${subject}&body=${body}`;
+    }
+  </script>
+</body>
+
+</html>
