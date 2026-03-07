@@ -732,7 +732,7 @@
 
   <!-- NAV -->
   <nav>
-    <div class="nav-logo">吳竣瑋 · CW</div>
+    <div class="nav-logo">CW Wu · 吳竣瑋</div>
     <ul class="nav-links">
       <li><a href="#skills">技能</a></li>
       <li><a href="#projects">作品集</a></li>
@@ -751,7 +751,8 @@
     </div>
 
     <h1>
-      <span class="name">吳竣瑋</span>
+      <span class="name">吳竣瑋 <small style="font-size:0.45em;font-weight:500;color:#94a3b8;letter-spacing:0.05em">CW
+          Wu</small></span>
       <span class="title">全端工程師 · AI 應用開發</span>
     </h1>
 
@@ -1022,10 +1023,19 @@
           <div class="section-label">Contact</div>
           <h2>歡迎洽談合作</h2>
           <p>
-            無論是 AI 應用開發、網站系統建置、電商自動化，還是資料分析專案，
+            無論是 AI 應用開發、網站系統建置、電商自動化，
+            還是資料分析專案，
             都歡迎與我聯繫。我會在 24 小時內回覆，並提供免費的需求評估。
           </p>
           <div class="contact-items">
+            <div class="contact-item">
+              <div class="contact-item-icon">✉️</div>
+              <div>
+                <div class="contact-item-label">Email</div>
+                <div class="contact-item-value"><a href="mailto:wuchunwei0518@gmail.com"
+                    style="color:var(--primary);text-decoration:none;">wuchunwei0518@gmail.com</a></div>
+              </div>
+            </div>
             <div class="contact-item">
               <div class="contact-item-icon">💼</div>
               <div>
@@ -1045,7 +1055,7 @@
               <div class="contact-item-icon">🌏</div>
               <div>
                 <div class="contact-item-label">服務地區</div>
-                <div class="contact-item-value">台灣 · 遠端皆可</div>
+                <div class="contact-item-value">台灣全端或遠端皆可</div>
               </div>
             </div>
           </div>
@@ -1096,7 +1106,7 @@
       if (!name || !email || !msg) { alert('請填寫所有欄位'); return; }
       const subject = encodeURIComponent(`[作品集詢問] 來自 ${name}`);
       const body = encodeURIComponent(`姓名：${name}\n聯絡方式：${email}\n\n需求描述：\n${msg}`);
-      window.location.href = `mailto:?subject=${subject}&body=${body}`;
+      window.location.href = `mailto:wuchunwei0518@gmail.com?subject=${subject}&body=${body}`;
     }
   </script>
 </body>
