@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>吳竣瑋 · 作品集 · Portfolio PDF</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ── RESET & BASE ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #0f172a;
+      --ink2: #1e293b;
+      --ink3: #334155;
+      --muted: #64748b;
+      --light: #f8fafc;
+      --blue: #0ea5e9;
+      --blue2: #6366f1;
+      --green: #10b981;
+      --border: #e2e8f0;
+      --accent-bg: #f0f9ff;
+    }
+
+    html { font-size: 14px; }
+
+    body {
+      font-family: 'Noto Sans TC', 'Inter', sans-serif;
+      background: #fff;
+      color: var(--ink);
+      line-height: 1.7;
+    }
+
+    /* ── PRINT BUTTON (screen only) ── */
+    .print-btn {
+      position: fixed;
+      top: 1.5rem;
+      right: 1.5rem;
+      z-index: 999;
+      background: linear-gradient(135deg, var(--blue), var(--blue2));
+      color: #fff;
+      border: none;
+      padding: 0.75rem 1.75rem;
+      border-radius: 100px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(14,165,233,0.35);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: inherit;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .print-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(14,165,233,0.45); }
+
+    @media print {
+      .print-btn { display: none !important; }
+      html { font-size: 11px; }
+      body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .page-break { page-break-before: always; }
+    }
+
+    /* ── PAGES ── */
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 0 auto 2rem;
+      background: #fff;
+      box-shadow: 0 4px 40px rgba(0,0,0,0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    @media print {
+      .page { box-shadow: none; margin: 0; width: 100%; }
+    }
+
+    /* ══════════════════════════════════
+       PAGE 1 — COVER
+    ══════════════════════════════════ */
+    .cover {
+      background: linear-gradient(145deg, #0f172a 0%, #1e293b 50%, #0c1a2e 100%);
+      color: #fff;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Top accent bar */
+    .cover-topbar {
+      height: 6px;
+      background: linear-gradient(90deg, var(--blue), var(--blue2), var(--green));
+    }
+
+    .cover-inner {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 3.5rem 4rem;
+      gap: 2rem;
+    }
+
+    /* Grid dots background */
+    .cover-inner::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle, rgba(14,165,233,0.08) 1px, transparent 1px);
+      background-size: 28px 28px;
+      pointer-events: none;
+    }
+
+    /* Header row: name + avatar */
+    .cover-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+
+    .cover-name-block { flex: 1; }
+
+    .cover-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(16,185,129,0.15);
+      border: 1px solid rgba(16,185,129,0.4);
+      border-radius: 100px;
+      padding: 0.3rem 0.9rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--green);
+      letter-spacing: 0.05em;
+      margin-bottom: 1rem;
+    }
+
+    .cover-badge-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--green);
+    }
+
+    .cover-name {
+      font-size: 3.8rem;
+      font-weight: 900;
+      line-height: 1;
+      margin-bottom: 0.4rem;
+      letter-spacing: -0.02em;
+    }
+
+    .cover-name-en {
+      font-size: 1.1rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.45);
+      letter-spacing: 0.15em;
+      margin-bottom: 0.75rem;
+    }
+
+    .cover-role {
+      font-size: 1.3rem;
+      font-weight: 400;
+      background: linear-gradient(135deg, var(--blue), var(--blue2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: 0.02em;
+    }
+
+    /* Avatar circle */
+    .cover-avatar {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue), var(--blue2));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      font-weight: 900;
+      color: #fff;
+      flex-shrink: 0;
+      box-shadow: 0 0 40px rgba(14,165,233,0.4);
+      letter-spacing: -0.03em;
+    }
+
+    /* Stats row */
+    .cover-stats {
+      display: flex;
+      gap: 0;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .cstat {
+      flex: 1;
+      text-align: center;
+      padding: 1.2rem 1rem;
+      border-right: 1px solid rgba(255,255,255,0.08);
+    }
+    .cstat:last-child { border-right: none; }
+
+    .cstat-num {
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--blue);
+      display: block;
+    }
+
+    .cstat-label {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 0.06em;
+    }
+
+    /* About / intro block */
+    .cover-intro {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-left: 3px solid var(--blue);
+      border-radius: 0 12px 12px 0;
+      padding: 1.25rem 1.5rem;
+      color: rgba(255,255,255,0.8);
+      font-size: 0.9rem;
+      line-height: 1.8;
+    }
+
+    /* Skills pills section on cover */
+    .cover-skills-title {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 0.75rem;
+    }
+
+    .cover-skills-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .cpill {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      background: rgba(14,165,233,0.1);
+      border: 1px solid rgba(14,165,233,0.25);
+      border-radius: 100px;
+      padding: 0.4rem 0.9rem;
+      font-size: 0.78rem;
+      color: var(--blue);
+      font-weight: 500;
+    }
+
+    .cpill.green {
+      background: rgba(16,185,129,0.1);
+      border-color: rgba(16,185,129,0.25);
+      color: var(--green);
+    }
+
+    .cpill.purple {
+      background: rgba(99,102,241,0.1);
+      border-color: rgba(99,102,241,0.25);
+      color: #818cf8;
+    }
+
+    /* Contact row on cover */
+    .cover-contact {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      padding: 1.25rem 1.5rem;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px;
+    }
+
+    .cc-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.65);
+    }
+
+    .cc-icon { font-size: 1rem; }
+    .cc-val { color: var(--blue); font-weight: 500; }
+
+    /* Bottom bar */
+    .cover-footer {
+      height: 6px;
+      background: linear-gradient(90deg, var(--green), var(--blue2), var(--blue));
+    }
+
+    /* ══════════════════════════════════
+       PAGE 2 onwards — PROJECTS
+    ══════════════════════════════════ */
+    .content-page {
+      padding: 3rem 3.5rem;
+    }
+
+    .page-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 2px solid var(--border);
+    }
+
+    .page-header-name {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .page-header-logo {
+      font-size: 0.85rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--blue), var(--blue2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Section heading */
+    .sec-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 0.3rem;
+    }
+
+    .sec-title {
+      font-size: 1.7rem;
+      font-weight: 800;
+      color: var(--ink);
+      margin-bottom: 0.3rem;
+    }
+
+    .sec-desc {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 1.75rem;
+    }
+
+    /* Project card (for PDF) */
+    .proj-card {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 0;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      margin-bottom: 1.25rem;
+      background: #fff;
+    }
+
+    .proj-card.full-w {
+      grid-template-columns: 1fr;
+    }
+
+    .proj-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-right: 1px solid var(--border);
+      min-height: 130px;
+    }
+
+    .proj-card.full-w .proj-img {
+      border-right: none;
+      border-bottom: 1px solid var(--border);
+      height: 160px;
+      min-height: unset;
+    }
+
+    .proj-body {
+      padding: 1.1rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .proj-cat {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--blue2);
+      margin-bottom: 0.3rem;
+    }
+
+    .proj-title {
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--ink);
+      margin-bottom: 0.4rem;
+    }
+
+    .proj-desc {
+      font-size: 0.78rem;
+      color: var(--ink3);
+      line-height: 1.7;
+      flex: 1;
+    }
+
+    .proj-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 0.75rem;
+    }
+
+    .tag {
+      font-size: 0.65rem;
+      padding: 0.18rem 0.55rem;
+      border-radius: 100px;
+      background: var(--accent-bg);
+      border: 1px solid rgba(14,165,233,0.25);
+      color: #0369a1;
+      font-weight: 600;
+    }
+
+    /* Small 2-col grid for smaller cards */
+    .proj-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .proj-mini {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .proj-mini-img {
+      width: 100%;
+      height: 110px;
+      object-fit: cover;
+      display: block;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .proj-mini-body {
+      padding: 0.8rem 0.9rem;
+    }
+
+    .proj-mini-cat {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--blue2);
+      margin-bottom: 0.25rem;
+    }
+
+    .proj-mini-title {
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: var(--ink);
+      margin-bottom: 0.3rem;
+    }
+
+    .proj-mini-desc {
+      font-size: 0.72rem;
+      color: var(--ink3);
+      line-height: 1.6;
+    }
+
+    .proj-mini-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+      margin-top: 0.6rem;
+    }
+
+    /* Skills page */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .sk-card {
+      background: var(--light);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1rem 1.1rem;
+    }
+
+    .sk-icon { font-size: 1.5rem; margin-bottom: 0.4rem; }
+    .sk-name { font-size: 0.88rem; font-weight: 800; margin-bottom: 0.3rem; }
+    .sk-desc { font-size: 0.72rem; color: var(--muted); line-height: 1.6; margin-bottom: 0.6rem; }
+
+    .sk-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+    .sk-tag {
+      font-size: 0.6rem;
+      padding: 0.15rem 0.5rem;
+      border-radius: 100px;
+      background: rgba(14,165,233,0.08);
+      border: 1px solid rgba(14,165,233,0.2);
+      color: #0369a1;
+      font-weight: 600;
+    }
+
+    /* Contact page */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .contact-items { display: flex; flex-direction: column; gap: 0.75rem; }
+
+    .ci {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.9rem 1rem;
+      background: var(--light);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+    }
+
+    .ci-icon { font-size: 1.3rem; }
+    .ci-label { font-size: 0.65rem; color: var(--muted); }
+    .ci-val { font-size: 0.85rem; font-weight: 700; color: var(--ink); }
+    .ci-val a { color: var(--blue); text-decoration: none; }
+
+    .cta-box {
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      border-radius: 16px;
+      padding: 2rem;
+      color: #fff;
+      text-align: center;
+    }
+
+    .cta-box h3 { font-size: 1.3rem; font-weight: 800; margin-bottom: 0.75rem; }
+    .cta-box p { font-size: 0.83rem; color: rgba(255,255,255,0.65); line-height: 1.8; margin-bottom: 1.25rem; }
+
+    .cta-email {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--blue), var(--blue2));
+      color: #fff;
+      padding: 0.65rem 1.5rem;
+      border-radius: 100px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      text-decoration: none;
+    }
+
+    /* divider */
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 1.5rem 0;
+    }
+
+    /* Highlight box */
+    .highlight {
+      background: linear-gradient(135deg, #f0f9ff, #eff6ff);
+      border: 1px solid rgba(14,165,233,0.2);
+      border-left: 3px solid var(--blue);
+      border-radius: 0 10px 10px 0;
+      padding: 1rem 1.25rem;
+      margin-bottom: 1.5rem;
+      font-size: 0.82rem;
+      color: var(--ink2);
+      line-height: 1.8;
+    }
+  </style>
+</head>
+<body>
+
+  <button class="print-btn" onclick="window.print()">
+    🖨️ 另存為 PDF
+  </button>
+
+  <!-- ═══════════════════════════════ PAGE 1 — COVER ═══════════════════════════════ -->
+  <div class="page cover">
+    <div class="cover-topbar"></div>
+
+    <div class="cover-inner">
+      <!-- Header -->
+      <div class="cover-header">
+        <div class="cover-name-block">
+          <div class="cover-badge">
+            <div class="cover-badge-dot"></div>
+            接案中 · 可立即開始合作
+          </div>
+          <div class="cover-name">吳竣瑋</div>
+          <div class="cover-name-en">CHUNWEI WU &nbsp;·&nbsp; CW</div>
+          <div class="cover-role">全端工程師 · AI 應用開發專家</div>
+        </div>
+        <div class="cover-avatar">CW</div>
+      </div>
+
+      <!-- Stats -->
+      <div class="cover-stats">
+        <div class="cstat">
+          <span class="cstat-num">50+</span>
+          <span class="cstat-label">GitHub Projects</span>
+        </div>
+        <div class="cstat">
+          <span class="cstat-num">10+</span>
+          <span class="cstat-label">商業案例</span>
+        </div>
+        <div class="cstat">
+          <span class="cstat-num">3+</span>
+          <span class="cstat-label">年開發經驗</span>
+        </div>
+        <div class="cstat">
+          <span class="cstat-num">24h</span>
+          <span class="cstat-label">回覆時效</span>
+        </div>
+      </div>
+
+      <!-- Intro -->
+      <div class="cover-intro">
+        專注於打造 <strong style="color:#38bdf8;">AI 驅動的商業應用</strong>，擅長 Python 後端、TypeScript 全端、自動化流程，已協助多間企業完成數位轉型與智能化系統建置。從需求分析到系統上線，提供端對端的完整解決方案，確保每個專案都達到企業級的穩定性與可延展性。
+      </div>
+
+      <!-- Skills pills -->
+      <div>
+        <div class="cover-skills-title">核心技術棧</div>
+        <div class="cover-skills-wrap">
+          <span class="cpill">🤖 AI / LLM / RAG</span>
+          <span class="cpill">⚡ Python · FastAPI</span>
+          <span class="cpill purple">🎨 TypeScript · React · Next.js</span>
+          <span class="cpill green">🔧 Selenium · Playwright</span>
+          <span class="cpill">📊 Pandas · scikit-learn</span>
+          <span class="cpill purple">☁️ Docker · GCP · Nginx</span>
+          <span class="cpill green">🔗 LangChain · LangGraph</span>
+          <span class="cpill">🎙️ Whisper · OpenAI</span>
+        </div>
+      </div>
+
+      <!-- Contact -->
+      <div class="cover-contact">
+        <div class="cc-item">
+          <span class="cc-icon">✉️</span>
+          <div>
+            <div style="font-size:0.65rem;color:rgba(255,255,255,0.4);letter-spacing:0.08em;">EMAIL</div>
+            <span class="cc-val">wuchunwei0518@gmail.com</span>
+          </div>
+        </div>
+        <div class="cc-item">
+          <span class="cc-icon">💼</span>
+          <div>
+            <div style="font-size:0.65rem;color:rgba(255,255,255,0.4);letter-spacing:0.08em;">GITHUB</div>
+            <span class="cc-val">github.com/Chunweiwu518</span>
+          </div>
+        </div>
+        <div class="cc-item">
+          <span class="cc-icon">🌏</span>
+          <div>
+            <div style="font-size:0.65rem;color:rgba(255,255,255,0.4);letter-spacing:0.08em;">服務地區</div>
+            <span style="color:rgba(255,255,255,0.65);font-size:0.82rem;font-weight:500;">台灣全端 · 遠端皆可</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cover-footer"></div>
+  </div>
+
+  <!-- ═══════════════════════════════ PAGE 2 — SKILLS ═══════════════════════════════ -->
+  <div class="page content-page page-break">
+    <div class="page-header">
+      <div class="page-header-name">吳竣瑋 · Portfolio 2025</div>
+      <div class="page-header-logo">CW Wu · 全端工程師</div>
+    </div>
+
+    <div class="sec-label">Core Skills</div>
+    <div class="sec-title">技術能力</div>
+    <div class="sec-desc">涵蓋從 AI 模型整合到前後端全端開發，以及自動化、爬蟲等完整技術棧。</div>
+
+    <div class="skills-grid">
+      <div class="sk-card">
+        <div class="sk-icon">🤖</div>
+        <div class="sk-name">AI / LLM 應用</div>
+        <div class="sk-desc">RAG 知識庫、ChatBot、多模態 Agent、語音辨識整合</div>
+        <div class="sk-tags">
+          <span class="sk-tag">OpenAI</span>
+          <span class="sk-tag">LangChain</span>
+          <span class="sk-tag">LangGraph</span>
+          <span class="sk-tag">Whisper</span>
+        </div>
+      </div>
+      <div class="sk-card">
+        <div class="sk-icon">⚡</div>
+        <div class="sk-name">後端開發</div>
+        <div class="sk-desc">RESTful API、WebSocket 即時通訊、資料庫設計</div>
+        <div class="sk-tags">
+          <span class="sk-tag">Python</span>
+          <span class="sk-tag">FastAPI</span>
+          <span class="sk-tag">Node.js</span>
+          <span class="sk-tag">PostgreSQL</span>
+        </div>
+      </div>
+      <div class="sk-card">
+        <div class="sk-icon">🎨</div>
+        <div class="sk-name">前端開發</div>
+        <div class="sk-desc">響應式 UI、SPA、即時更新介面、Component 設計</div>
+        <div class="sk-tags">
+          <span class="sk-tag">TypeScript</span>
+          <span class="sk-tag">React</span>
+          <span class="sk-tag">Next.js</span>
+          <span class="sk-tag">Vue</span>
+        </div>
+      </div>
+      <div class="sk-card">
+        <div class="sk-icon">🔧</div>
+        <div class="sk-name">自動化 / 爬蟲</div>
+        <div class="sk-desc">電商平台自動化、資料爬取、排程任務、OCR</div>
+        <div class="sk-tags">
+          <span class="sk-tag">Selenium</span>
+          <span class="sk-tag">Playwright</span>
+          <span class="sk-tag">Scrapy</span>
+          <span class="sk-tag">APScheduler</span>
+        </div>
+      </div>
+      <div class="sk-card">
+        <div class="sk-icon">📊</div>
+        <div class="sk-name">資料分析 / ML</div>
+        <div class="sk-desc">機器學習模型、NLP 文字處理、數據視覺化</div>
+        <div class="sk-tags">
+          <span class="sk-tag">Pandas</span>
+          <span class="sk-tag">scikit-learn</span>
+          <span class="sk-tag">Transformers</span>
+          <span class="sk-tag">Jupyter</span>
+        </div>
+      </div>
+      <div class="sk-card">
+        <div class="sk-icon">☁️</div>
+        <div class="sk-name">部署 / DevOps</div>
+        <div class="sk-desc">容器化部署、CI/CD、雲端服務整合</div>
+        <div class="sk-tags">
+          <span class="sk-tag">Docker</span>
+          <span class="sk-tag">GitHub Actions</span>
+          <span class="sk-tag">GCP</span>
+          <span class="sk-tag">Nginx</span>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider" />
+
+    <div class="sec-label">Portfolio</div>
+    <div class="sec-title">精選作品 — AI 應用</div>
+    <div class="sec-desc">以下為代表性 AI 應用案例，展示實際商業落地能力。</div>
+
+    <!-- Featured project -->
+    <div class="proj-card">
+      <img src="images/ke_ming.png" alt="企業 AI RAG 知識庫" class="proj-img" />
+      <div class="proj-body">
+        <div>
+          <div class="proj-cat">⭐ 精選 · AI · RAG · 企業應用</div>
+          <div class="proj-title">企業 AI RAG 知識庫管理 Chat 系統</div>
+          <div class="proj-desc">
+            為企業打造的 AI RAG 知識庫管理與對話系統。員工可上傳 PDF、Word、Excel，系統自動建立向量索引，透過自然語言 Chat 方式即可精準查詢企業內部知識，附上來源文件引用，杜絕 AI 幻覺。<br/><br/>
+            <strong>技術棧：</strong> Python FastAPI × Next.js TypeScript × LangChain × OpenAI Embedding × Chroma DB × Docker
+          </div>
+        </div>
+        <div class="proj-tags">
+          <span class="tag">Python</span>
+          <span class="tag">TypeScript</span>
+          <span class="tag">RAG</span>
+          <span class="tag">LangChain</span>
+          <span class="tag">OpenAI</span>
+          <span class="tag">Docker</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Translation + Transcription -->
+    <div class="proj-grid-2">
+      <div class="proj-mini">
+        <img src="images/translation.png" alt="即時翻譯" class="proj-mini-img" />
+        <div class="proj-mini-body">
+          <div class="proj-mini-cat">AI · 即時通訊</div>
+          <div class="proj-mini-title">即時翻譯聊天系統</div>
+          <div class="proj-mini-desc">WebSocket 多語言即時互譯平台，整合 GPT API 翻譯引擎，支援繁中、英、日等多語言，可保留語氣和語境。</div>
+          <div class="proj-mini-tags">
+            <span class="tag">TypeScript</span>
+            <span class="tag">WebSocket</span>
+            <span class="tag">OpenAI</span>
+          </div>
+        </div>
+      </div>
+      <div class="proj-mini">
+        <img src="images/transcription.png" alt="錄音逐字稿" class="proj-mini-img" />
+        <div class="proj-mini-body">
+          <div class="proj-mini-cat">AI · 語音辨識</div>
+          <div class="proj-mini-title">會議錄音逐字稿系統</div>
+          <div class="proj-mini-desc">上傳錄音檔自動產生多說話者逐字稿，支援時間戳記標注，可匯出 Word/PDF。整合 Whisper，支援中英文。</div>
+          <div class="proj-mini-tags">
+            <span class="tag">Python</span>
+            <span class="tag">Whisper</span>
+            <span class="tag">FastAPI</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════ PAGE 3 — MORE PROJECTS ═══════════════════════════════ -->
+  <div class="page content-page page-break">
+    <div class="page-header">
+      <div class="page-header-name">吳竣瑋 · Portfolio 2025</div>
+      <div class="page-header-logo">CW Wu · 全端工程師</div>
+    </div>
+
+    <div class="sec-label">Portfolio</div>
+    <div class="sec-title">精選作品 — 全端 · 自動化</div>
+    <div class="sec-desc">企業全端系統、電商自動化工具，以及數據分析平台。</div>
+
+    <!-- ERP -->
+    <div class="proj-card" style="margin-bottom:1.25rem;">
+      <img src="images/erp.png" alt="ERP 系統" class="proj-img" />
+      <div class="proj-body">
+        <div>
+          <div class="proj-cat">全端 · 企業系統</div>
+          <div class="proj-title">企業 ERP 管理系統</div>
+          <div class="proj-desc">
+            全方位企業資源規劃系統，涵蓋訂單管理、庫存追蹤、財務報表、人員權限控管。即時 KPI 儀表板、多角色身份驗證，大幅提升企業內部協作效率。
+          </div>
+        </div>
+        <div class="proj-tags">
+          <span class="tag">TypeScript</span>
+          <span class="tag">React</span>
+          <span class="tag">PostgreSQL</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cyberbiz + Waterdrop -->
+    <div class="proj-grid-2" style="margin-bottom:1.25rem;">
+      <div class="proj-mini">
+        <img src="images/cyberbiz.png" alt="Cyberbiz 電商自動化" class="proj-mini-img" />
+        <div class="proj-mini-body">
+          <div class="proj-mini-cat">自動化 · 電商</div>
+          <div class="proj-mini-title">Cyberbiz 電商自動化工具</div>
+          <div class="proj-mini-desc">針對 Cyberbiz 電商的自動化工具，商品爬取、庫存同步、自動打標籤、批量訂單處理。排程每日自動執行。</div>
+          <div class="proj-mini-tags">
+            <span class="tag">Python</span>
+            <span class="tag">Selenium</span>
+            <span class="tag">排程</span>
+          </div>
+        </div>
+      </div>
+      <div class="proj-mini">
+        <img src="images/waterdrop.png" alt="電商後台管理系統" class="proj-mini-img" />
+        <div class="proj-mini-body">
+          <div class="proj-mini-cat">全端 · 電商</div>
+          <div class="proj-mini-title">電商賣家後台管理系統</div>
+          <div class="proj-mini-desc">全端後台管理系統，商品管理、訂單追蹤、庫存監控、業績報表。即時資料更新、多帳號權限管理。</div>
+          <div class="proj-mini-tags">
+            <span class="tag">TypeScript</span>
+            <span class="tag">React</span>
+            <span class="tag">Node.js</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Backtest + ML -->
+    <div class="proj-grid-2" style="margin-bottom:2rem;">
+      <div class="proj-mini">
+        <img src="images/backtest.png" alt="量化回測平台" class="proj-mini-img" />
+        <div class="proj-mini-body">
+          <div class="proj-mini-cat">金融 · 數據分析</div>
+          <div class="proj-mini-title">量化交易策略回測平台</div>
+          <div class="proj-mini-desc">策略回測、績效指標計算（總報酬率、夏普比率、最大回撤），K 線圖與買賣點可視化。</div>
+          <div class="proj-mini-tags">
+            <span class="tag">TypeScript</span>
+            <span class="tag">Charts</span>
+            <span class="tag">金融數據</span>
+          </div>
+        </div>
+      </div>
+      <div class="proj-mini">
+        <img src="images/ml.png" alt="ML NLP 專案" class="proj-mini-img" />
+        <div class="proj-mini-body">
+          <div class="proj-mini-cat">ML · NLP · 研究</div>
+          <div class="proj-mini-title">機器學習 &amp; NLP 研究專案</div>
+          <div class="proj-mini-desc">中文文本分類、情感分析、NLP Pipeline。實作 LORA/QLORA 微調、Transformer 模型訓練，準確率達 94.3%。</div>
+          <div class="proj-mini-tags">
+            <span class="tag">Python</span>
+            <span class="tag">Transformers</span>
+            <span class="tag">NLP</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider" />
+
+    <!-- Contact section on last page -->
+    <div class="sec-label">Contact</div>
+    <div class="sec-title">歡迎洽談合作</div>
+    <div class="sec-desc">無論是 AI 應用開發、網站系統建置、電商自動化或資料分析，都歡迎與我聯繫。</div>
+
+    <div class="highlight">
+      ✅ 提供 <strong>免費需求評估</strong>，收到訊息後 <strong>24 小時內回覆</strong>。台灣全端或遠端合作皆可。
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-items">
+        <div class="ci">
+          <div class="ci-icon">✉️</div>
+          <div>
+            <div class="ci-label">Email</div>
+            <div class="ci-val"><a href="mailto:wuchunwei0518@gmail.com">wuchunwei0518@gmail.com</a></div>
+          </div>
+        </div>
+        <div class="ci">
+          <div class="ci-icon">💼</div>
+          <div>
+            <div class="ci-label">GitHub</div>
+            <div class="ci-val"><a href="https://github.com/Chunweiwu518">github.com/Chunweiwu518</a></div>
+          </div>
+        </div>
+        <div class="ci">
+          <div class="ci-icon">⚡</div>
+          <div>
+            <div class="ci-label">專長領域</div>
+            <div class="ci-val">AI 應用 · 全端開發 · 自動化</div>
+          </div>
+        </div>
+        <div class="ci">
+          <div class="ci-icon">🌏</div>
+          <div>
+            <div class="ci-label">服務地區</div>
+            <div class="ci-val">台灣全端或遠端皆可</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cta-box">
+        <h3>準備好開始合作了嗎？</h3>
+        <p>
+          告訴我您的需求，無論是 AI 系統、網站開發、自動化工具，我都能提供專業的解決方案。
+        </p>
+        <a href="mailto:wuchunwei0518@gmail.com" class="cta-email">✉ 立即聯繫我</a>
+        <div style="margin-top:1rem;font-size:0.75rem;color:rgba(255,255,255,0.4);">
+          © 2025 吳竣瑋 · CW Wu · All Rights Reserved
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
